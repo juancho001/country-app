@@ -43,4 +43,5 @@ For more information on using the Daisy UI, including documentation, components,
 ```bash
 1. Creacón y carga inicial del Proyecto
 2. Instalación y Configuración de Tailwind CSS y Daisy UI
+3. Trabajando en las rutas y la Estructura de carpetas
 ```
