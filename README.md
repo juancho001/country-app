@@ -46,4 +46,5 @@ For more information on using the Daisy UI, including documentation, components,
 3. Trabajando en las rutas y la Estructura de carpetas
 4. Trabajando con los Layouts
 5. Usando Daisy UI Components (Footer Component and Home Page)
+6. Diseño del NavBar
 ```
