@@ -45,4 +45,5 @@ For more information on using the Daisy UI, including documentation, components,
 2. Instalación y Configuración de Tailwind CSS y Daisy UI
 3. Trabajando en las rutas y la Estructura de carpetas
 4. Trabajando con los Layouts
+5. Usando Daisy UI Components (Footer Component and Home Page)
 ```
