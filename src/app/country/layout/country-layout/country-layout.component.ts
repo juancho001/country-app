@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarCountryComponent } from "../../components/Navbar-Country/navbar-country.component.";
+import { NavbarCountryComponent } from "../../components/navbar-country/navbar-country.component.";
 
 @Component({
   selector: 'app-country-layout',
