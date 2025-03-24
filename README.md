@@ -49,4 +49,5 @@ For more information on using the Daisy UI, including documentation, components,
 6. Diseño del NavBar
 7. Trabajando en los Inputs, Tablas y Rutas
 8. Implementando el Services
+9. Implementado las Interfaces y el Mapeo de datos
 ```
