@@ -55,4 +55,5 @@ For more information on using the Daisy UI, including documentation, components,
 12. Ajustando lo Iconos del Navbar
 13. Ajustendo los componentes adicionales
 14. Implementando el DecimalPipe
+15. Manejo de excepciones
 ```

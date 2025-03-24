@@ -25,11 +25,24 @@ export class ByCapitalPageComponent {
       this.hasError.set(null);
     }
 
-    this.countryService.searchByCapital(search).subscribe(response => {
-      this.isLoading.set(false);
-      this.searchCapital.set(response);
-      console.log(response);
-    });
+    this.countryService.searchByCapital(search).subscribe(
+      {
+        next:(response) => {
+          this.isLoading.set(false);
+          this.searchCapital.set(response);
+          console.log(response);
+        },
+        error:(err)=>{
+          this.isLoading.set(false);
+          this.searchCapital.set([]);
+          this.hasError.set(err)
+        }
+      }
+    );
   }
 }
 
+// response => {
+//   this.isLoading.set(false);
+//   this.searchCapital.set(response);
+//   console.log(response);
