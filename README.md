@@ -54,4 +54,5 @@ For more information on using the Daisy UI, including documentation, components,
 11. Ajustando el List Component
 12. Ajustando lo Iconos del Navbar
 13. Ajustendo los componentes adicionales
+14. Implementando el DecimalPipe
 ```

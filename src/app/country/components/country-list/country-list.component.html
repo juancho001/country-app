@@ -23,7 +23,7 @@
         <td><img [src]="Capital.flagSvg" [alt]="Capital.country" class="w-15"></td>
         <td>{{Capital.country}}</td>
         <td>{{Capital.capitalName}}</td>
-        <td>{{Capital.population}}</td>
+        <td><span class="badge badge-success">{{Capital.population | number}}</span></td>
         <td>{{Capital.idioma}}</td>
         <td><a href="" class="link-primary cursor-pointer">Más Información...</a></td>
       </tr>
