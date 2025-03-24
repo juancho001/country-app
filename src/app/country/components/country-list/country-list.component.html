@@ -3,23 +3,31 @@
   <table class="table table-md m-1 w-full">
     <thead class="">
       <tr>
-        <th>#</th>
-        <th>Icono</th>
-        <th>Bandera</th>
-        <th>Nombre</th>
+        <th>No.</th>
+        <th>Country Code</th>
+        <th>Icon</th>
+        <th>Flag</th>
+        <th>Country</th>
         <th>Capital</th>
-        <th>Población</th>
+        <th>Population</th>
+        <th>Idioma</th>
+        <th>Other data</th>
       </tr>
     </thead>
     <tbody>
+      @for (Capital of capital(); track Capital.cca3; let index = $index) {
       <tr>
-        <td>1</td>
-        <td>icono</td>
-        <td>Bandera</td>
-        <td>Nombre</td>
-        <td>Capital</td>
-        <td>Población</td>
+        <td>{{ index + 1 }}</td>
+        <td>{{ Capital.countryCode }}</td>
+        <td>{{ Capital.flagFifa }}</td>
+        <td><img [src]="Capital.flagSvg" [alt]="Capital.country" class="w-15"></td>
+        <td>{{Capital.country}}</td>
+        <td>{{Capital.capitalName}}</td>
+        <td>{{Capital.population}}</td>
+        <td>{{Capital.idioma}}</td>
+        <td><a href="" class="link-primary cursor-pointer">Más Información...</a></td>
       </tr>
+    }
     </tbody>
   </table>
 </section>
