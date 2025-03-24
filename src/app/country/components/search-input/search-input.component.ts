@@ -9,8 +9,5 @@ import { Component, input, output } from '@angular/core';
 export class SearchInputComponent {
   value = output<string>();
   placeholder = input('Search');
-  // onSearch(search:string){
-  //   console.log({search});
-  // }
 
 }

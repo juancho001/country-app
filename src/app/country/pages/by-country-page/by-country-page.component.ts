@@ -7,4 +7,10 @@ import { SearchInputComponent } from "../../components/search-input/search-input
   templateUrl: './by-country-page.component.html',
   //changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ByCountryPageComponent { }
+export class ByCountryPageComponent {
+
+  onSearch(search:string){
+    console.log({search});
+  }
+
+ }
