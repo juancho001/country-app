@@ -61,5 +61,6 @@ For more information on using the REST Countries, including documentation, visit
 14. Implementando el DecimalPipe
 15. Manejo de excepciones
 16. Reactividad con Resources
+17. Ajustando el componente Country Page para mostrar la data
 
 ```

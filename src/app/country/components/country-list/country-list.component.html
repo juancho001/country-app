@@ -25,7 +25,8 @@
         <td>{{Capital.capitalName}}</td>
         <td><span class="badge badge-success">{{Capital.population | number}}</span></td>
         <td>{{Capital.idioma}}</td>
-        <td><a href="" class="link-primary cursor-pointer">Más Información...</a></td>
+        <td><a [routerLink]="['/country/by',Capital.cca3]"
+          href="" class="link-primary cursor-pointer">Más Información...</a></td>
       </tr>
     }
     </tbody>

@@ -29,4 +29,18 @@ export class CountryService {
     );
   }
 
+
+  searchByCountry(search:string):Observable<Country[]>{
+    const query = search.toLowerCase();
+    return this.http.get<RESTCountry[]>(`${API_URL}/name/${query}`)
+    .pipe(
+      map( reponse => CountryMapper.mapRestCountryArrayToCountryArray(reponse)),
+      catchError(error => {
+        console.log('Error Fectching :',error)
+
+        return throwError(()=> new Error('No se encontraron resultados de la busqueda...'))
+      })
+    );
+  }
+
 }
