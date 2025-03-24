@@ -1,4 +1,4 @@
-<county-search-input placeholder="Search by Capital"></county-search-input>
-<country-list></country-list>
+<county-search-input placeholder="Search by Capital" (value)="onSearch($event)"></county-search-input>
+<country-list [capital]="searchCapital()"></country-list>
 
 
