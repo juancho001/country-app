@@ -48,4 +48,5 @@ For more information on using the Daisy UI, including documentation, components,
 5. Usando Daisy UI Components (Footer Component and Home Page)
 6. Diseño del NavBar
 7. Trabajando en los Inputs, Tablas y Rutas
+8. Implementando el Services
 ```
