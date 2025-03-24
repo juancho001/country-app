@@ -52,4 +52,5 @@ For more information on using the Daisy UI, including documentation, components,
 9. Implementado las Interfaces y el Mapeo de datos
 10. Ajustando el componente Capital Page para motrar la data
 11. Ajustando el List Component
+12. Ajustando lo Iconos del Navbar
 ```
