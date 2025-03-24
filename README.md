@@ -38,6 +38,10 @@ For more information on using the Tailwind, including documentation, components,
 
 For more information on using the Daisy UI, including documentation, components, visit the [Daisy UI Overview and Command Reference](https://daisyui.com) page.
 
+For more information on using the Iconify., including documentation, components, visit the [Iconify Overview and Command Reference](https://iconify.design/) page.
+
+For more information on using the REST Countries, including documentation, visit the [Iconify Overview and Command Reference](https://restcountries.com/) page.
+
 # Table of Contents
 
 ```bash
@@ -50,10 +54,12 @@ For more information on using the Daisy UI, including documentation, components,
 7. Trabajando en los Inputs, Tablas y Rutas
 8. Implementando el Services
 9. Implementado las Interfaces y el Mapeo de datos
-10. Ajustando el componente Capital Page para motrar la data
+10. Ajustando el componente Capital Page para mostrar la data
 11. Ajustando el List Component
 12. Ajustando lo Iconos del Navbar
 13. Ajustendo los componentes adicionales
 14. Implementando el DecimalPipe
 15. Manejo de excepciones
+16. Reactividad con Resources
+
 ```

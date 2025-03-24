@@ -1,45 +1,59 @@
 import { CountryService } from './../../services/country.service';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, resource, signal } from '@angular/core';
 import { SearchInputComponent } from "../../components/search-input/search-input.component";
 import { CountryListComponent } from "../../components/country-list/country-list.component";
-import { Country } from '../../interfaces/country.interface';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-by-capital-page',
-  imports: [SearchInputComponent, CountryListComponent],
+  imports: [SearchInputComponent,CountryListComponent],
   templateUrl: './by-capital-page.component.html',
   //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ByCapitalPageComponent {
-  isLoading = signal(false);
-  hasError = signal<string | null>(null);
+
   countryService = inject(CountryService);
-  searchCapital = signal<Country[]>([]);
+  search = signal('');
 
+  countryResource = resource({
+    request:()=> ({ query: this.search()}),
+    loader:async({request})=> {
+      if(!request.query) return[];
 
-  onSearch(search: string) {
-    if (this.isLoading()) {
-      return;
-    } else {
-      this.isLoading.set(true);
-      this.hasError.set(null);
+      return await firstValueFrom(this.countryService.searchByCapital(request.query))
     }
+  })
 
-    this.countryService.searchByCapital(search).subscribe(
-      {
-        next:(response) => {
-          this.isLoading.set(false);
-          this.searchCapital.set(response);
-          console.log(response);
-        },
-        error:(err)=>{
-          this.isLoading.set(false);
-          this.searchCapital.set([]);
-          this.hasError.set(err)
-        }
-      }
-    );
-  }
+// TODO: Se comenta para realizar la implementación de Async con Resources
+
+// hasError = signal<string | null>(null);
+// isLoading = signal(false);
+// searchCapital = signal<Country[]>([]);
+
+
+  // onSearch(search: string) {
+  //   if (this.isLoading()) {
+  //     return;
+  //   } else {
+  //     this.isLoading.set(true);
+  //     this.hasError.set(null);
+  //   }
+
+  //   this.countryService.searchByCapital(search).subscribe(
+  //     {
+  //       next:(response) => {
+  //         this.isLoading.set(false);
+  //         this.searchCapital.set(response);
+  //         console.log(response);
+  //       },
+  //       error:(err)=>{
+  //         this.isLoading.set(false);
+  //         this.searchCapital.set([]);
+  //         this.hasError.set(err)
+  //       }
+  //     }
+  //   );
+  // }
 }
 
 // response => {
