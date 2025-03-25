@@ -62,5 +62,6 @@ For more information on using the REST Countries, including documentation, visit
 15. Manejo de excepciones
 16. Reactividad con Resources
 17. Ajustando el componente Country Page para mostrar la data
+18. Implementando la reactividad con rxResources
 
 ```

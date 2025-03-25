@@ -1,8 +1,9 @@
 import { CountryService } from './../../services/country.service';
-import { Component, inject, resource, signal } from '@angular/core';
+import { Component, inject, resource, signal } from '@angular/core'
+import { rxResource } from '@angular/core/rxjs-interop';
 import { SearchInputComponent } from "../../components/search-input/search-input.component";
 import { CountryListComponent } from "../../components/country-list/country-list.component";
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, of } from 'rxjs';
 
 @Component({
   selector: 'app-by-capital-page',
@@ -15,14 +16,27 @@ export class ByCapitalPageComponent {
   countryService = inject(CountryService);
   search = signal('');
 
-  countryResource = resource({
-    request:()=> ({ query: this.search()}),
-    loader:async({request})=> {
-      if(!request.query) return[];
-
-      return await firstValueFrom(this.countryService.searchByCapital(request.query))
+  //Implementación con rsResources
+  countryResource = rxResource({
+    request: ()=> ({query:this.search()}),
+    loader:({request}) => {
+      if (! request.query) return of([]);
+      return this.countryService.searchByCapital(request.query);
     }
+
   })
+
+
+
+  // Implementación con Resources
+  // countryResource = resource({
+  //   request:()=> ({ query: this.search()}),
+  //   loader:async({request})=> {
+  //     if(!request.query) return[];
+
+  //     return await firstValueFrom(this.countryService.searchByCapital(request.query))
+  //   }
+  // })
 
 // TODO: Se comenta para realizar la implementación de Async con Resources
 
