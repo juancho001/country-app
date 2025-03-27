@@ -29,6 +29,25 @@
           href="" class="link-primary cursor-pointer">Más Información...</a></td>
       </tr>
     }
+    <!--  -->
+
+    @if (capital().length == 0 && !isLoading()) {
+      <tr>
+        <td colspan="8" class="text-center">
+          No se encontraron resultados..
+        </td>
+      </tr>
+    }
+
+    <!--  -->
+    @if(isLoading()){
+      <tr>
+        <td colspan="8" class="text-center">
+          <span class="loading loading-spinner loading-xl text-warning"></span>
+        </td>
+      </tr>
+    }
+
     </tbody>
   </table>
 </section>

@@ -1,5 +1,5 @@
 <county-search-input placeholder="Search by Capital" (value)="search.set($event)"></county-search-input>
-
+<!--
 @if(countryResource.error()) {
   <div role="alert" class="alert alert-error">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
@@ -9,7 +9,12 @@
   </div>
 }@if( countryResource.hasValue() ) {
   <country-list [capital]="countryResource.value()!"></country-list>
-}
+} -->
 
+<country-list [capital]="countryResource.value() ?? []"
+[errorMessage]="countryResource.error()"
+[isEmpty]="countryResource.value()?.length == 0"
+[isLoading]="countryResource.isLoading()"
+></country-list>
 
 
