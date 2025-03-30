@@ -6,7 +6,14 @@ export interface Country{
   country:string,
   capitalName:string,
   population:number,
-  idioma:string
+  languages:string,
+  regregion:string,
+  subregion:string,
+  googleMaps:string,
+  timezones:string,
+  continents:string,
+  borders:string,
+  area:number
 }
 
 export interface CountryCode{

@@ -50,10 +50,10 @@ export interface CoatOfArms {
 }
 
 export interface Currencies {
-  COP: Cop;
+  cSymbol:CurrencySymbol
 }
 
-export interface Cop {
+export interface moneda {
   name:   string;
   symbol: string;
 }
@@ -105,4 +105,23 @@ export interface NativeName {
 export interface Translation {
   official: string;
   common:   string;
+}
+
+export interface CurrencySymbol {
+  COL: COP,
+  VEN: VES,
+  PER:PER,
+
+}
+
+export interface COP {
+  COP: moneda;
+}
+
+export interface VES {
+  VES: moneda;
+}
+
+export interface PER {
+  PER: moneda;
 }

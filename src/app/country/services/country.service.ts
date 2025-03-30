@@ -45,4 +45,21 @@ export class CountryService {
     );
   }
 
+
+
+  searchCountryByAlphaCode(code:string){
+    const url_AlphaCode = `${API_URL}/alpha/${code}`;
+    return this.http.get<RESTCountry[]>(url_AlphaCode)
+    .pipe(
+      map( reponse => CountryMapper.mapRestCountryArrayToCountryArray(reponse)),
+      delay(1000),
+      map ( countries => countries.at(0)),
+      catchError(error => {
+        console.log('Error Fectching :',error)
+
+        return throwError(()=> new Error(`No se encontraron resultados de la busqueda por el codigo : ${code}`))
+      })
+    );
+  }
+
 }
