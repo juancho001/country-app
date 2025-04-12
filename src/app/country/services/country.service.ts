@@ -4,6 +4,7 @@ import { RESTCountry } from '../interfaces/rest-country-intefaces';
 import { catchError, delay, map, Observable, of, tap, throwError } from 'rxjs';
 import type { Country } from '../interfaces/country.interface';
 import { CountryMapper } from '../mappers/country.mapper';
+import { Region } from '../interfaces/region.type';
 
 const API_URL = 'https://restcountries.com/v3.1'
 
@@ -18,6 +19,7 @@ export class CountryService {
 
   private queryCacheByCapital = new Map<string,Country[]>();
   private queryCacheByCountry = new Map<string,Country[]>();
+  private queryCacheByRegion = new Map<Region,Country[]>();
 
 
 
@@ -68,6 +70,30 @@ export class CountryService {
     );
   }
 
+
+
+  searchByRegion(search:Region){
+    const query = search.toLowerCase();
+
+      // TODO: realizamos la verificacion si la busqueda ya existe
+      if(this.queryCacheByRegion.has(search)){
+        return of (this.queryCacheByRegion.get(search) ?? []);
+      }
+
+      console.log(`Haciendo la peticion al servicio por la busqueda ${query}`);
+
+    return this.http.get<RESTCountry[]>(`${API_URL}/region/${query}`)
+    .pipe(
+      map( reponse => CountryMapper.mapRestCountryArrayToCountryArray(reponse)),
+      tap((countries)=> this.queryCacheByRegion.set(search,countries)),
+      delay(1000),
+      catchError(error => {
+        console.log(`Error Fectching : No se encontro el Pais ${search} >>>> `,error)
+
+        return throwError(()=> new Error('No se encontraron resultados de la busqueda...'))
+      })
+    );
+  }
 
 
   searchCountryByAlphaCode(code:string){

@@ -12,15 +12,15 @@ export class CountryMapper{
       cca3:restCountry.cca3,
       flagSvg:restCountry.flags.svg,
       country:restCountry.translations['spa'].common.toString() ?? 'No Spanish Name',
-      capitalName:restCountry.capital.join(';').toString(),
+      capitalName:restCountry.capital?.join(',').toString(),
       population:restCountry.population,
-      languages:restCountry.languages.spa,
+      languages:restCountry.languages?.spa,
       regregion:restCountry.region,
       subregion:restCountry.subregion,
       googleMaps:restCountry.maps.googleMaps,
-      timezones:restCountry.timezones.join(','),
-      continents:restCountry.continents.join(','),
-      borders:restCountry.borders.join(),
+      timezones:restCountry.timezones?.join(',') ?? 'No timezones ',
+      continents:restCountry.continents?.join(',') ?? 'No continents',
+      borders:restCountry.borders?.join(',') ?? 'No borders',
       area:restCountry.area
     }
   }

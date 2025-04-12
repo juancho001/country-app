@@ -67,6 +67,7 @@ For more information on using the REST Countries, including documentation, visit
 20. Vista Detallada de las busquedas
 21. Debounce Time ( Mejorando el componente de busquedas )
 22. Trabajando con el caché para la busqueda de Capitales
-22. Trabajando con el caché para la busqueda de Paises
+23. Trabajando con el caché para la busqueda de Paises
+24. Trabajando en la busqueda de paises por Region 
 
 ```
