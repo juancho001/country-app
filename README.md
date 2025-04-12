@@ -65,5 +65,6 @@ For more information on using the REST Countries, including documentation, visit
 18. Implementando la reactividad con rxResources
 19. Mejorando las busquedas
 20. Vista Detallada de las busquedas
+21. Debounce Time ( Mejorando el componente de busquedas )
 
 ```

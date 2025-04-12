@@ -1,4 +1,6 @@
-<county-search-input placeholder="Search by Country" (value)="search.set($event)"></county-search-input>
+<county-search-input placeholder="Search by Country" (value)="search.set($event)"
+[debounceTime]="400"
+></county-search-input>
 
 <!-- @if(countryResource.error()) {
   <div role="alert" class="alert alert-error">
