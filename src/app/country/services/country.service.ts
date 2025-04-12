@@ -17,6 +17,7 @@ export class CountryService {
   private http = inject(HttpClient);
 
   private queryCacheByCapital = new Map<string,Country[]>();
+  private queryCacheByCountry = new Map<string,Country[]>();
 
 
 
@@ -28,6 +29,7 @@ export class CountryService {
       return of (this.queryCacheByCapital.get(search) ?? []);
     }
 
+    console.log(`Haciendo la peticion al servicio por la busqueda ${search}`);
 
     return this.http.get<RESTCountry[]>(`${API_URL}/capital/${query}`)
     .pipe(
@@ -35,7 +37,7 @@ export class CountryService {
       tap((countries)=> this.queryCacheByCapital.set(search,countries)),
       delay(1000),
       catchError(error => {
-        console.log('Error Fectching :',error)
+        console.log(`Error Fectching : No se encontro la Capital ${search} >>>>`,error)
 
         return throwError(()=> new Error('No se encontraron resultados de la busqueda...'))
       })
@@ -45,12 +47,21 @@ export class CountryService {
 
   searchByCountry(search:string):Observable<Country[]>{
     const query = search.toLowerCase();
+
+      // TODO: realizamos la verificacion si la busqueda ya existe
+      if(this.queryCacheByCountry.has(search)){
+        return of (this.queryCacheByCountry.get(search) ?? []);
+      }
+
+      console.log(`Haciendo la peticion al servicio por la busqueda ${search}`);
+
     return this.http.get<RESTCountry[]>(`${API_URL}/name/${query}`)
     .pipe(
       map( reponse => CountryMapper.mapRestCountryArrayToCountryArray(reponse)),
+      tap((countries)=> this.queryCacheByCountry.set(search,countries)),
       delay(1000),
       catchError(error => {
-        console.log('Error Fectching :',error)
+        console.log(`Error Fectching : No se encontro el Pais ${search} >>>> `,error)
 
         return throwError(()=> new Error('No se encontraron resultados de la busqueda...'))
       })
