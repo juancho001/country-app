@@ -69,5 +69,6 @@ For more information on using the REST Countries, including documentation, visit
 22. Trabajando con el caché para la busqueda de Capitales
 23. Trabajando con el caché para la busqueda de Paises
 24. Trabajando en la busqueda de paises por Region 
+25. Preservar los resultados de las rutas con ActivatedRoute
 
 ```

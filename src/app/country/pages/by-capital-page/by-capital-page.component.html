@@ -1,5 +1,6 @@
 <county-search-input placeholder="Search by Capital" (value)="search.set($event)"
 [debounceTime]="400"
+[initialValue]="search()"
 ></county-search-input>
 <!--
 @if(countryResource.error()) {

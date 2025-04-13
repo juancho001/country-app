@@ -4,7 +4,7 @@
     <thead class="">
       <tr>
         <th>No.</th>
-        <th>Country Code</th>
+        <!-- <th>Country Code</th> -->
         <th>Icon</th>
         <th>Flag</th>
         <th>Country</th>
@@ -18,7 +18,7 @@
       @for (Capital of capital(); track Capital.cca3; let index = $index) {
       <tr>
         <td>{{ index + 1 }}</td>
-        <td>{{ Capital.countryCode }}</td>
+        <!-- <td>{{ Capital.countryCode }}</td> -->
         <td>{{ Capital.flagFifa }}</td>
         <td><img [src]="Capital.flagSvg" [alt]="Capital.country" class="w-15"></td>
         <td>{{Capital.country}}</td>

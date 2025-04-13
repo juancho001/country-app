@@ -4,6 +4,7 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { SearchInputComponent } from "../../components/search-input/search-input.component";
 import { CountryListComponent } from "../../components/country-list/country-list.component";
 import { firstValueFrom, of } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-by-capital-page',
@@ -14,12 +15,16 @@ import { firstValueFrom, of } from 'rxjs';
 export class ByCapitalPageComponent {
 
   countryService = inject(CountryService);
-  search = signal('');
+  activateRoute = inject(ActivatedRoute);
+  queryParam = this.activateRoute.snapshot.queryParamMap.get('query') ?? '';
+  search = signal(this.queryParam);
+
 
   //Implementación con rsResources
   countryResource = rxResource({
     request: ()=> ({query:this.search()}),
     loader:({request}) => {
+      console.log({query:request.query});
       if (! request.query) return of([]);
       return this.countryService.searchByCapital(request.query);
     }
