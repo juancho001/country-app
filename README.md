@@ -71,5 +71,6 @@ For more information on using the REST Countries, including documentation, visit
 24. Trabajando en la busqueda de paises por Region 
 25. Preservar los resultados de las rutas con ActivatedRoute
 26. Mantener los resultados de las rutas via código
+28. Validar los parámetros de las rutas por regiones
 
 ```

@@ -1,10 +1,23 @@
+import { Region } from './../../interfaces/region.type';
 import { CountryService } from './../../services/country.service';
 import { Component, inject, input, linkedSignal, output, signal } from '@angular/core';
 import { CountryListComponent } from "../../components/country-list/country-list.component";
-import { Region } from '../../interfaces/region.type';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { of } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
+
+function validateQueryParam(queryParam:string):Region{
+  queryParam = queryParam.toLowerCase();
+  const validRegions: Record<string,Region> = {
+    africa : 'Africa',
+    americas : 'Americas',
+    asia : 'Asia',
+    europe:'Europe',
+    oceania:'Oceania',
+    antarctic:'Antarctic'
+  };
+  return validRegions[queryParam] ?? 'Americas'
+}
 
 @Component({
   selector: 'app-by-region-page',
@@ -17,7 +30,7 @@ export class ByRegionPageComponent {
   countryService = inject(CountryService);
   activateRoute = inject(ActivatedRoute);
   router = inject(Router)
-  queryParam = (this.activateRoute.snapshot.queryParamMap.get('query') ?? '') as Region;
+  queryParam = this.activateRoute.snapshot.queryParamMap.get('query') ?? '';
 
   public regions: Region[] = [
     'Africa',
@@ -28,7 +41,7 @@ export class ByRegionPageComponent {
     'Antarctic'
   ]
 
-  selectedRegion = linkedSignal<Region|null>( ()=> this.queryParam ?? 'Americas');
+  selectedRegion = linkedSignal<Region|null>( ()=> validateQueryParam(this.queryParam));
 
 
 
