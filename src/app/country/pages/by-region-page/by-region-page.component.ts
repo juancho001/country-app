@@ -1,9 +1,10 @@
 import { CountryService } from './../../services/country.service';
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, input, linkedSignal, output, signal } from '@angular/core';
 import { CountryListComponent } from "../../components/country-list/country-list.component";
 import { Region } from '../../interfaces/region.type';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { of } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-by-region-page',
@@ -14,6 +15,9 @@ import { of } from 'rxjs';
 export class ByRegionPageComponent {
 
   countryService = inject(CountryService);
+  activateRoute = inject(ActivatedRoute);
+  router = inject(Router)
+  queryParam = (this.activateRoute.snapshot.queryParamMap.get('query') ?? '') as Region;
 
   public regions: Region[] = [
     'Africa',
@@ -24,7 +28,10 @@ export class ByRegionPageComponent {
     'Antarctic'
   ]
 
-  selectedRegion = signal<Region|null>(null);
+  selectedRegion = linkedSignal<Region|null>( ()=> this.queryParam ?? 'Americas');
+
+
+
 
     // implementando rxResource
     countryResource = rxResource({
@@ -32,6 +39,11 @@ export class ByRegionPageComponent {
       loader:({request})=>{
         console.log({request})
         if(!request.query) return of([])
+          this.router.navigate(['/country/by-region'],{
+            queryParams:{
+              query:request.query
+            }
+          })
         return this.countryService.searchByRegion(request.query);
       }
     });

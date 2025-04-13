@@ -4,7 +4,7 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { SearchInputComponent } from "../../components/search-input/search-input.component";
 import { CountryListComponent } from "../../components/country-list/country-list.component";
 import { firstValueFrom, of } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-by-capital-page',
@@ -16,6 +16,7 @@ export class ByCapitalPageComponent {
 
   countryService = inject(CountryService);
   activateRoute = inject(ActivatedRoute);
+  router = inject(Router)
   queryParam = this.activateRoute.snapshot.queryParamMap.get('query') ?? '';
   search = signal(this.queryParam);
 
@@ -24,8 +25,12 @@ export class ByCapitalPageComponent {
   countryResource = rxResource({
     request: ()=> ({query:this.search()}),
     loader:({request}) => {
-      console.log({query:request.query});
-      if (! request.query) return of([]);
+      if (! request.query) return of([]); // si no tenemos ninguna valor en la busqueda que regrese un arreglo vacio
+      this.router.navigate(['/country/by-capital'],{
+        queryParams:{
+          query:request.query
+        }
+      })
       return this.countryService.searchByCapital(request.query);
     }
 
